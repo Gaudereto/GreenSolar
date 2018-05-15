@@ -10,17 +10,21 @@
         android:id="@+id/welcome_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius= "4dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="4dp"
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/city_text"
+        >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/welcome_text"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -34,62 +38,68 @@
         android:text="Cidade: "
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/city_edit_text"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/city_edit_text"
         app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toBottomOf="@id/welcome_text" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <AutoCompleteTextView
         android:id="@+id/city_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:gravity="center"
-        android:textSize="16sp"
         android:imeOptions="actionNext"
         android:singleLine="true"
-        android:background="@drawable/border"
-        app:layout_constraintRight_toLeftOf="@id/right_line"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/consumo_text"
         app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toBottomOf="@id/city_text" />
+        app:layout_constraintRight_toLeftOf="@id/right_line"
+        app:layout_constraintTop_toBottomOf="@+id/city_text" />
 
     <TextView
         android:id="@+id/consumo_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Consumo médio em KWh: "
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/consumo_edit_text"
+        app:layout_constraintBottom_toTopOf="@+id/consumo_edit_text"
         app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toBottomOf="@id/city_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/city_edit_text" />
 
     <EditText
         android:id="@+id/consumo_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
         android:gravity="center"
+        android:imeOptions="actionUnspecified"
+        android:maxLines="1"
         android:singleLine="true"
         android:textSize="16sp"
-        android:maxLines="1"
-        android:imeOptions="actionUnspecified"
-        android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@id/estimate_button"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintTop_toBottomOf="@id/consumo_text" />
+        app:layout_constraintTop_toBottomOf="@+id/consumo_text" />
 
     <Button
         android:id="@+id/estimate_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Estimar"
-        android:textStyle="bold"
         android:background="@color/colorAccent"
+        android:text="Estimar"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/consumo_edit_text"
         app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintRight_toLeftOf="@id/right_line"
-         />
+        app:layout_constraintRight_toLeftOf="@id/right_line" />
 
     <android.support.constraint.Guideline
         android:id="@+id/left_line"

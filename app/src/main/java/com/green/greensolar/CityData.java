@@ -2,11 +2,14 @@ package com.green.greensolar;
 
 public class CityData {
     private String mCity;
-    private double mIrradiation;
+    private double mIrradiationInclined;
+    private double mIrradiationHorizontal;
 
-    public CityData(String city, double irradiation) {
+
+    public CityData(String city, double irradiationInclined, double irradiationHorizontal) {
         mCity = city;
-        mIrradiation = irradiation;
+        mIrradiationInclined = irradiationInclined;
+        mIrradiationHorizontal = irradiationHorizontal;
     }
 
     public String getCity() {
@@ -17,11 +20,20 @@ public class CityData {
         mCity = city;
     }
 
-    public double getIrradiation() {
-        return mIrradiation;
+    public double getIrradiationInclined() {
+        return mIrradiationInclined;
     }
 
-    public void setIrradiation(double irradiation) {
-        mIrradiation = irradiation;
+    public void setIrradiationInclined(double irradiationInclined) {
+        mIrradiationInclined = irradiationInclined;
     }
+
+    public double getIrradiationHorizontal() {
+        return mIrradiationHorizontal;
+    }
+
+    public void setIrradiationHorizontal(double irradiationHorizontal) {
+        mIrradiationHorizontal = irradiationHorizontal;
+    }
+
 }

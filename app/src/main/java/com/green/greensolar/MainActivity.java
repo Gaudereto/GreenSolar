@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        // Configura um adapter para receber as opções de cidade do APP:
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, mCitiesName);
         mCityTextView.setAdapter(adapter);
@@ -57,14 +58,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //
         mEstimateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newConsumo = mConsumeTextView.getText().toString();
+                String choosenCity = mCityTextView.getText().toString();
+                boolean teste = CITIES_DATA.contains(choosenCity);
+
+                Log.d("Teste","O teste é: "+  teste);
+/*                String newConsumo = mConsumeTextView.getText().toString();
                 Intent newIntent = new Intent(MainActivity.this, ResultsActivity.class);
                 newIntent.putExtra("Consumo",newConsumo);
-                startActivity(newIntent);
+                startActivity(newIntent);*/
 
 
             }
@@ -72,12 +77,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void initCityData() {
-        CITIES_DATA.add(new CityData("Juiz de Fora",4.71));
-        CITIES_DATA.add(new CityData("Belo Horizonte",4.71));
+        CITIES_DATA.add(new CityData("Juiz de Fora",4.72,4.52));
+        CITIES_DATA.add(new CityData("Carangola",5.03,4.84));
+        CITIES_DATA.add(new CityData("São João Nepomuceno",4.89,4.70));
+        CITIES_DATA.add(new CityData("Bicas",4.77,4.60));
+        CITIES_DATA.add(new CityData("Ponte Nova",4.97,4.78));
     }
-
-
-
-
 
 }
