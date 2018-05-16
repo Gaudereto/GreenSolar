@@ -7,19 +7,23 @@ import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
-    TextView testeTextView;
+    private TextView testeTextView;
+    private CityData city;
+    private double myConsumo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        Intent myIntent = getIntent();
-        String myConsumo = myIntent.getStringExtra("Consumo");
         testeTextView = findViewById(R.id.consumo_teste_text);
 
-        testeTextView.setText(myConsumo);
+        Intent myIntent = getIntent();
+        myConsumo = Double.parseDouble(myIntent.getStringExtra("Consumo"));
+        city = (CityData) myIntent.getSerializableExtra("City");
 
+
+        testeTextView.setText(String.valueOf(myConsumo) + " " + city.getCity());
 
     }
 }

@@ -1,6 +1,10 @@
 package com.green.greensolar;
 
-public class CityData {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CityData implements Serializable {
     private String mCity;
     private double mIrradiationInclined;
     private double mIrradiationHorizontal;
