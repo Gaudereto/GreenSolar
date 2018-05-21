@@ -16,7 +16,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        testeTextView = findViewById(R.id.consumo_teste_text);
+        testeTextView = findViewById(R.id.results_text);
 
         Intent myIntent = getIntent();
         myConsumo = Double.parseDouble(myIntent.getStringExtra("Consumo"));
