@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">GreenSolar</string>
     <string name="welcome_text">O aplicativo Green Solar permite que você estime o custo de um sistema de geração de energia fotovoltaico a partir de alguns de seus dados:</string>
+    <string name="navigation_drawer_open">Abrindo</string>
+    <string name="navigation_drawer_close">Fechando</string>
 </resources>

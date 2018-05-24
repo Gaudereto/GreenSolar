@@ -1,10 +1,17 @@
 package com.green.greensolar;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.drm.DrmStore;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -27,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mEstimateButton;
     private String mCitiesName[];
     private RadioGroup mRadioGroup;
+    private DrawerLayout mDrawer;
+    private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         mClientFareTextView = (EditText) findViewById(R.id.fare_edit_text);
         mEstimateButton = (Button) findViewById(R.id.estimate_button);
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // Configurando o navigation drawer:
+        mToggle = new ActionBarDrawerToggle(this, mDrawer, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        mDrawer.addDrawerListener(mToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        mToggle.syncState();
+
 
         // Inicia a lista com cidades e respectivas irradiações:
         initCityData();
@@ -124,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         CITIES_DATA.add(new CityData("Ponte Nova",4.97,4.78));
     }
 
-    // Método para procurar a cidade desejada no banco de dados
+    // Método para procurar a cidade desejada no banco de dados:
     private CityData findCityByName(List<CityData> myCityList, String cityName) {
         for(CityData city : myCityList) {
             if(city.getCity().equals(cityName)) {
@@ -134,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    // Show error on screen with an alert dialog
+    // Show error on screen with an alert dialog:
     private void showErrorDialog(String message) {
 
         new AlertDialog.Builder(this)
@@ -143,6 +161,20 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mToggle.onConfigurationChanged(newConfig);
     }
 
 }
