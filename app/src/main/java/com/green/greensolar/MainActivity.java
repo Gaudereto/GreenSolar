@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.drm.DrmStore;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -161,6 +162,17 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if(drawer.isDrawerOpen((GravityCompat.START))){
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
