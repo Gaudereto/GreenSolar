@@ -7,7 +7,7 @@
     tools:context="com.green.greensolar.MainActivity">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/welcome_text"
+        android:id="@+id/welcome_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -15,87 +15,185 @@
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/city_text">
-        <TextView
+        app:layout_constraintBottom_toTopOf="@id/estimate_button">
+
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/welcome_text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/welcome_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <View
+                android:id="@+id/aux_view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_below="@id/welcome_text">
+            </View>
+
+            <TextView
+                android:id="@+id/city_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cidade: "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/aux_view1" />
+
+            <AutoCompleteTextView
+                android:id="@+id/city_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:inputType="text"
+                android:layout_margin="8dp"
+                android:layout_below="@id/city_text"/>
+
+            <View
+                android:id="@+id/aux_view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_below="@id/city_edit_text">
+            </View>
+
+            <TextView
+                android:id="@+id/consumo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Consumo médio em KWh: "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/aux_view2"/>
+
+            <EditText
+                android:id="@+id/consumo_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:inputType="number"
+                android:layout_margin="8dp"
+                android:layout_below="@id/consumo_text"/>
+
+            <View
+                android:id="@+id/aux_view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_below="@id/consumo_edit_text">
+            </View>
+
+            <TextView
+                android:id="@+id/fare_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tarifa de energia R$/KWh: "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/aux_view3"/>
+
+            <EditText
+                android:id="@+id/fare_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:inputType="numberDecimal"
+                android:layout_margin="8dp"
+                android:layout_below="@id/fare_text" />
+            <View
+                android:id="@+id/aux_view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_below="@id/fare_edit_text">
+            </View>
+            <TextView
+                android:id="@+id/system_type_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrada de energia: "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/aux_view4"/>
+           <RadioGroup
+               android:id="@+id/radio_group"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/system_type_text"
+               android:layout_margin="8dp"
+               android:weightSum="3"
+
+               android:orientation="horizontal">
+               <RadioButton
+                   android:id="@+id/mono_option"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Monofásico"
+                   android:textColor="@android:color/tab_indicator_text"
+                   android:textStyle="bold"/>
+               <RadioButton
+                   android:id="@+id/bi_option"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Bifásico"
+                   android:textColor="@android:color/tab_indicator_text"
+                   android:textStyle="bold"/>
+               <RadioButton
+                   android:id="@+id/tri_option"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Trifásico"
+                   android:textColor="@android:color/tab_indicator_text"
+                   android:textStyle="bold" />
+           </RadioGroup>
+        </RelativeLayout>
+        </ScrollView>
     </android.support.v7.widget.CardView>
-
-
-    <TextView
-        android:id="@+id/city_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cidade: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/city_edit_text"
-        app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
-    <AutoCompleteTextView
-        android:id="@+id/city_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:singleLine="true"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/consumo_text"
-        app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintTop_toBottomOf="@+id/city_text" />
-
-    <TextView
-        android:id="@+id/consumo_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Consumo médio em KWh: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/consumo_edit_text"
-        app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toBottomOf="@+id/city_edit_text" />
-
-    <EditText
-        android:id="@+id/consumo_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:gravity="center"
-        android:imeOptions="actionUnspecified"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textSize="16sp"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintTop_toBottomOf="@+id/consumo_text" />
 
     <Button
         android:id="@+id/estimate_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/light_green"
         android:text="Estimar"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/consumo_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/welcome_card"
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line" />
 

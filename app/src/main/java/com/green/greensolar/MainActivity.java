@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,13 +19,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     // Variaveis constantes:
-    private List<CityData> CITIES_DATA = new ArrayList<CityData>();
+    private final List<CityData> CITIES_DATA = new ArrayList<CityData>();
 
     // Referências da interface:
     private AutoCompleteTextView mCityTextView;
-    private EditText mConsumeTextView;
+    private EditText mConsumeTextView, mClientFareTextView;
     private Button mEstimateButton;
     private String mCitiesName[];
+    private RadioGroup mRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
         mCityTextView = (AutoCompleteTextView)  findViewById(R.id.city_edit_text);
         mConsumeTextView = (EditText) findViewById(R.id.consumo_edit_text);
+        mClientFareTextView = (EditText) findViewById(R.id.fare_edit_text);
         mEstimateButton = (Button) findViewById(R.id.estimate_button);
+        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
 
         // Inicia a lista com cidades e respectivas irradiações:
         initCityData();
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //
+        // Rotina para o click do botão de estimativa do sistema:
         mEstimateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,21 +81,44 @@ public class MainActivity extends AppCompatActivity {
                 if(newConsumo.isEmpty()){ return; }
                 else { if(Integer.parseInt(newConsumo) == 0 ){return;}}
 
+                // Checa se a tarifa foi específicada:
+                String fare = mClientFareTextView.getText().toString();
+                if(fare.isEmpty()){fare="0.75";}
+
+                //Checa o tipo de entrada de energia:
+                int radioID = mRadioGroup.getCheckedRadioButtonId();
+                int phases=0;
+                switch(radioID) {
+                    case R.id.mono_option:
+                        phases = 1;
+                        break;
+                    case R.id.bi_option:
+                        phases = 2;
+                        break;
+                    case R.id.tri_option:
+                        phases = 3;
+                        break;
+                    case -1:
+                        showErrorDialog("Por favor informe o tipo do seu padrão de entrada");
+                        return;
+                }
+
                 // Inicia a pagina para visualizar resultados:
                 Intent newIntent = new Intent(MainActivity.this, ResultsActivity.class);
                 newIntent.putExtra("Consumo",newConsumo);
+                newIntent.putExtra("Fases",phases);
+                newIntent.putExtra("Tarifa",fare);
                 newIntent.putExtra("City",city);
                 startActivity(newIntent);
-
 
             }
         });
     }
 
     // Método que inicia uma lista com as cidades cadastradas:
-    public void initCityData() {
+    private void initCityData() {
         CITIES_DATA.add(new CityData("Juiz de Fora",4.72,4.52));
-        CITIES_DATA.add(new CityData("Carangola",5.03,4.84));
+        CITIES_DATA.add(new CityData("Carangola",5.055,4.84));
         CITIES_DATA.add(new CityData("São João Nepomuceno",4.89,4.70));
         CITIES_DATA.add(new CityData("Bicas",4.77,4.60));
         CITIES_DATA.add(new CityData("Ponte Nova",4.97,4.78));
