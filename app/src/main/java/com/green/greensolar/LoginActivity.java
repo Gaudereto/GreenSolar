@@ -39,13 +39,14 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId==100 || actionId== EditorInfo.IME_NULL) {
+                if(actionId==R.integer.login || actionId== EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
                 }
                 return false;
             }
         });
+        
     }
 
     // Função de click do botão de login:
