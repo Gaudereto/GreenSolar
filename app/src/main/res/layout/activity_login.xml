@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.green.greensolar.LoginActivity">
+
+    <TextView
+        android:id="@+id/app_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="GREEN"
+        android:textColor="@color/colorAccent"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@id/solar_image"
+        app:layout_constraintLeft_toRightOf="@id/left_line"
+        app:layout_constraintRight_toLeftOf="@id/right_line"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/solar_image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@id/app_name_text"
+        app:layout_constraintLeft_toRightOf="@id/left_line"
+        app:layout_constraintRight_toLeftOf="@id/right_line"
+        app:layout_constraintBottom_toTopOf="@id/login_layout"
+        android:src="@drawable/solar_energy"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_layout"
+        app:layout_constraintRight_toLeftOf="@id/right_line"
+        app:layout_constraintLeft_toRightOf="@id/left_line"
+        app:layout_constraintTop_toBottomOf="@id/solar_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        android:elevation="50dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <AutoCompleteTextView
+                android:background="@drawable/border"
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:imeOptions="actionNext"
+                android:textColor="@android:color/tab_indicator_text"
+                android:textColorHint="@android:color/tab_indicator_text"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textIsSelectable="false"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:layout_below="@id/card_title"
+                android:layout_margin="8dp"/>
+
+            <EditText
+                android:id="@+id/login_password"
+                android:background="@drawable/border"
+                android:textColor="@android:color/tab_indicator_text"
+                android:textColorHint="@android:color/tab_indicator_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:layout_below="@id/login_email"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:maxLines="1"
+                android:layout_margin="8dp"/>
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_below="@id/login_password"
+                    android:text="Registrar"
+                    android:background="@color/green"
+                    android:layout_margin="4dp"/>
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrar"
+                    android:background="@color/dark_green"
+                    android:layout_margin="4dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/left_line"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/right_line"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
+
+</android.support.constraint.ConstraintLayout>

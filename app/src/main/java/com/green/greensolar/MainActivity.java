@@ -97,12 +97,13 @@ public class MainActivity extends AppCompatActivity {
 
                 // Checa se o consumo informada é um número válido:
                 String newConsumo = mConsumeTextView.getText().toString();
-                if(newConsumo.isEmpty()){ return; }
-                else { if(Integer.parseInt(newConsumo) == 0 ){return;}}
 
                 // Checa se a tarifa foi específicada:
                 String fare = mClientFareTextView.getText().toString();
+                if(newConsumo.isEmpty()){ return; }
+                else { if(Integer.parseInt(newConsumo) == 0 ){return;}}
                 if(fare.isEmpty()){fare="0.75";}
+
 
                 //Checa o tipo de entrada de energia:
                 int radioID = mRadioGroup.getCheckedRadioButtonId();

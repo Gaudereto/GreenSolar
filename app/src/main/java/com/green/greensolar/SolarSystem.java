@@ -20,6 +20,7 @@ public class SolarSystem {
     private double mSystemPrices[] = new double[2];
     private double mYearEconomy;
     private double mPayback;
+    private float mCashFlux[] = new float[25];
 
 
 
@@ -50,6 +51,10 @@ public class SolarSystem {
         // Resultados Econômicos do projeto:
         mYearEconomy = mSystemArea*mPanelEfficiency*mPerformanceRatio*mIrradiationInclined*365*mTarifa;
         mPayback = ((mSystemPrices[0] + mSystemPrices[1])/(2*mYearEconomy));
+        for (int i=0; i<25; i++){
+            mCashFlux[i] = (float) (-(mSystemPrices[0]+mSystemPrices[1])/2+mYearEconomy*(i+1));
+        }
+
     }
 
     public double getIrradiationInclined() {
@@ -74,6 +79,10 @@ public class SolarSystem {
 
     public double getPayback() {
         return mPayback;
+    }
+
+    public float[] getCashFlux() {
+        return mCashFlux;
     }
 
     private void getPriceByPower(double power) {

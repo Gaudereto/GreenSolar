@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "531924068672",
+    "firebase_url": "https://solargreen-57ee3.firebaseio.com",
+    "project_id": "solargreen-57ee3",
+    "storage_bucket": "solargreen-57ee3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531924068672:android:acbd993f9b07315d",
+        "android_client_info": {
+          "package_name": "com.green.greensolar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531924068672-reejaq3m601fuifsp4os17ukpcl21edg.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "531924068672-reejaq3m601fuifsp4os17ukpcl21edg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVMLaz1wbg360-7XWYE0HfOgbA1emOHGI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
