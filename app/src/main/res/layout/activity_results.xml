@@ -1,228 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             tools:context=".ResultsActivity">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultsActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/results_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Resultados:"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:id="@+id/aux_view1"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/results_text"
-                android:background="@color/light_gray"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/irradiation_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view1"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Irradiação:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/results_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Resultados:"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/irradiation_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/irradiation_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="5.5 KWh/m2"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/results_text"
+                    android:background="@color/light_gray"/>
 
-            <View
-                android:id="@+id/aux_view2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/irradiation_value_text"
-                android:background="@color/light_gray"/>
+                <TextView
+                    android:id="@+id/irradiation_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view1"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Irradiação:"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_power_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view2"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Potência do sistema:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/irradiation_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/irradiation_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="5.5 KWh/m2"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_power_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/system_power_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="5 KWp"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/irradiation_value_text"
+                    android:background="@color/light_gray"/>
 
-            <View
-                android:id="@+id/aux_view3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/system_power_value_text"
-                android:background="@color/light_gray"/>
+                <TextView
+                    android:id="@+id/system_power_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view2"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Potência do sistema:"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_area_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view3"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Área necessária:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/system_power_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/system_power_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="5 KWp"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_area_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/system_area_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="50 m2"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/system_power_value_text"
+                    android:background="@color/light_gray"/>
 
-            <View
-                android:id="@+id/aux_view4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/system_area_value_text"
-                android:background="@color/light_gray"/>
+                <TextView
+                    android:id="@+id/system_area_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view3"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Área necessária:"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_price_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view4"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Preço médio do sistema:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/system_area_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/system_area_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="50 m2"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/system_price_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/system_price_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="R$ 15.000,00"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/system_area_value_text"
+                    android:background="@color/light_gray"/>
 
-            <View
-                android:id="@+id/aux_view5"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/system_price_value_text"
-                android:background="@color/light_gray"/>
+                <TextView
+                    android:id="@+id/system_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view4"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Preço médio do sistema:"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/year_economy_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view5"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Economia anual alcançada:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/system_price_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/system_price_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="R$ 15.000,00"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/year_economy_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/year_economy_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="R$ 15.000,00"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/system_price_value_text"
+                    android:background="@color/light_gray"/>
 
-            <View
-                android:id="@+id/aux_view6"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/year_economy_value_text"
-                android:background="@color/light_gray"/>
+                <TextView
+                    android:id="@+id/year_economy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Economia anual alcançada:"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/payback_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view6"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Retorno do investimento:"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/year_economy_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/year_economy_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="R$ 15.000,00"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/payback_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/payback_text"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="5 anos"
-                android:textSize="16sp"/>
+                <View
+                    android:id="@+id/aux_view6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/year_economy_value_text"
+                    android:background="@color/light_gray"/>
 
-<!--            <View
-                android:id="@+id/aux_view7"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/payback_value_text"
-                android:background="@color/light_gray"/>
-            <TextView
-                android:id="@+id/cash_flux_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/aux_view7"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Fluxo de caixa acumulado:"
-                android:textSize="16sp"/>
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/results_chart"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_below="@id/cash_flux_text"
-                android:layout_margin="8dp"
-                tools:layout_editor_absoluteX="161dp"
-                tools:layout_editor_absoluteY="0dp"/>-->
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/payback_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aux_view6"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Retorno do investimento:"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/payback_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/payback_text"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="5 anos"
+                    android:textSize="16sp"/>
+
+                <!--            <View
+                                android:id="@+id/aux_view7"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_below="@id/payback_value_text"
+                                android:background="@color/light_gray"/>
+                            <TextView
+                                android:id="@+id/cash_flux_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/aux_view7"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:text="Fluxo de caixa acumulado:"
+                                android:textSize="16sp"/>
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/results_chart"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_below="@id/cash_flux_text"
+                                android:layout_margin="8dp"
+                                tools:layout_editor_absoluteX="161dp"
+                                tools:layout_editor_absoluteY="0dp"/>-->
+            </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v7.widget.CardView>
 

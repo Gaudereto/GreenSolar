@@ -33,7 +33,6 @@
         app:layout_constraintBottom_toTopOf="@id/login_layout"
         android:src="@drawable/solar_energy"/>
 
-
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -71,6 +70,7 @@
                 android:textColorHint="@android:color/tab_indicator_text"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:padding="4dp"
                 android:textIsSelectable="false"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:layout_below="@id/card_title"
@@ -83,34 +83,42 @@
                 android:textColorHint="@android:color/tab_indicator_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="4dp"
                 android:hint="Senha"
                 android:imeOptions="actionUnspecified"
+                android:imeActionId="100"
                 android:inputType="textPassword"
                 android:layout_below="@id/login_email"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:maxLines="1"
                 android:layout_margin="8dp"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_password">
                 <Button
                     android:id="@+id/register_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:layout_below="@id/login_password"
                     android:text="Registrar"
+                    android:layout_weight="1"
                     android:background="@color/green"
-                    android:layout_margin="4dp"/>
+                    android:layout_margin="8dp"/>
                 <Button
                     android:id="@+id/login_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entrar"
+                    android:layout_weight="1"
+                    android:onClick="signIn"
                     android:background="@color/dark_green"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
+                    android:textStyle="bold" />
+            </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // Inicialização das views da activity:
         mCityTextView = (AutoCompleteTextView)  findViewById(R.id.city_edit_text);
         mConsumeTextView = (EditText) findViewById(R.id.consumo_edit_text);
         mClientFareTextView = (EditText) findViewById(R.id.fare_edit_text);
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Show error on screen with an alert dialog:
-    private void showErrorDialog(String message) {
+    public void showErrorDialog(String message) {
 
         new AlertDialog.Builder(this)
                 .setTitle("Oops")
