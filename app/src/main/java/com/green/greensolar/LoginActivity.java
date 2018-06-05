@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private Button mRegisterButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.login_email);
         mPasswordView = (EditText) findViewById(R.id.login_password);
-        mRegisterButton = (Button) findViewById(R.id.register_button);
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -46,7 +45,13 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-        
+
+    }
+
+    //Função de click do botão de registro de novo usuário:
+    public void registerNewUser(View v){
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     // Função de click do botão de login:
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                Log.d("FlashChat", "signInWithEmail() onComplete: " + task.isSuccessful());
+                Log.d("GreenSolar", "signInWithEmail() onComplete: " + task.isSuccessful());
 
                 if (!task.isSuccessful()) {
                     Log.d("FlashChat", "Problem signing in: " + task.getException());

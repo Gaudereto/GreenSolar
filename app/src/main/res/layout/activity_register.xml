@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.green.greensolar.LoginActivity">
+    tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/app_name_text"
+        android:id="@+id/register_app_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
@@ -18,28 +18,18 @@
         android:textSize="54sp"
         android:textStyle="bold"
         android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@id/solar_image"
+        app:layout_constraintBottom_toTopOf="@id/register_layout"
         app:layout_constraintLeft_toRightOf="@id/left_line"
         app:layout_constraintRight_toLeftOf="@id/right_line"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/solar_image"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/app_name_text"
-        app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintRight_toLeftOf="@id/right_line"
-        app:layout_constraintBottom_toTopOf="@id/login_layout"
-        android:src="@drawable/solar_energy"/>
-
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/login_layout"
+        android:id="@+id/register_layout"
         app:layout_constraintRight_toLeftOf="@id/right_line"
         app:layout_constraintLeft_toRightOf="@id/left_line"
-        app:layout_constraintTop_toBottomOf="@id/solar_image"
+        app:layout_constraintTop_toBottomOf="@id/register_app_name_text"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white"
         android:elevation="50dp">
@@ -51,7 +41,7 @@
                 android:id="@+id/card_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Registrar"
                 android:gravity="center"
                 android:padding="8dp"
                 android:textSize="18sp"
@@ -61,7 +51,24 @@
 
             <AutoCompleteTextView
                 android:background="@drawable/border"
-                android:id="@+id/login_email"
+                android:id="@+id/register_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome"
+                android:imeOptions="actionNext"
+                android:textColor="@android:color/tab_indicator_text"
+                android:textColorHint="@android:color/tab_indicator_text"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:padding="4dp"
+                android:textIsSelectable="false"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:layout_below="@id/card_title"
+                android:layout_margin="8dp"/>
+
+            <AutoCompleteTextView
+                android:background="@drawable/border"
+                android:id="@+id/register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -73,57 +80,54 @@
                 android:padding="4dp"
                 android:textIsSelectable="false"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
-                android:layout_below="@id/card_title"
+                android:layout_below="@id/register_username"
                 android:layout_margin="8dp"/>
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/register_password"
                 android:background="@drawable/border"
                 android:textColor="@android:color/tab_indicator_text"
                 android:textColorHint="@android:color/tab_indicator_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:hint="Senha"
-                android:imeOptions="actionUnspecified"
-                android:imeActionId="@integer/login"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:imeActionId="100"
                 android:inputType="textPassword"
-                android:layout_below="@id/login_email"
+                android:layout_below="@id/register_email"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:maxLines="1"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_margin="8dp"/>
 
+            <EditText
+                android:id="@+id/register_confirm_password"
+                android:background="@drawable/border"
+                android:textColor="@android:color/tab_indicator_text"
+                android:textColorHint="@android:color/tab_indicator_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:hint="Confirmar Senha"
+                android:imeOptions="actionUnspecified"
+                android:imeActionId="@integer/register_form_finished"
+                android:inputType="textPassword"
+                android:layout_below="@id/register_password"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:maxLines="1"
+                android:layout_margin="8dp"/>
 
-                <Button
-                    android:id="@+id/login_register_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="@string/action_register"
-                    android:background="@color/green"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:maxHeight="2dp"
-                    android:onClick="registerNewUser"
-                    android:layout_below="@id/login_button"/>
-                <Button
-                    android:id="@+id/login_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="@string/action_sign_in"
-                    android:onClick="signIn"
-                    android:background="@color/dark_green"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_below="@id/login_password"/>
-
+            <Button
+                android:id="@+id/register_sign_up_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="@string/action_register"
+                android:background="@color/green"
+                android:layout_below="@id/register_confirm_password"
+                android:onClick="signUp"
+                android:layout_margin="8dp"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
@@ -140,5 +144,4 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95"/>
-
 </android.support.constraint.ConstraintLayout>
