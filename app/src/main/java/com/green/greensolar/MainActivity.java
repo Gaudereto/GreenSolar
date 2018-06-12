@@ -1,10 +1,12 @@
 package com.green.greensolar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.drm.DrmStore;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,10 +26,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     // Variaveis constantes:
     private final List<CityData> CITIES_DATA = new ArrayList<CityData>();
+    static final String GREEN_PREFS = "GreenPrefs";
+    static final String LOGGED_FLAG = "userlogged";
 
     // Referências da interface:
     private AutoCompleteTextView mCityTextView;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup mRadioGroup;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
+    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mEstimateButton = (Button) findViewById(R.id.estimate_button);
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
         // Configurando o navigation drawer:
         mToggle = new ActionBarDrawerToggle(this, mDrawer, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mToggle.syncState();
-
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         // Inicia a lista com cidades e respectivas irradiações:
         initCityData();
@@ -188,6 +194,36 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.nav_item_one) {
+
+        } else if (id == R.id.nav_item_two) {
+
+        } else if (id == R.id.nav_item_three) {
+
+        } else if (id == R.id.nav_item_four) {
+            logOut();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Função para efetuar o logout do usuário:
+    public void logOut(){
+        // Salva o status do usuário como não logado:
+        SharedPreferences prefs = getSharedPreferences(GREEN_PREFS, 0);
+        prefs.edit().putBoolean(LOGGED_FLAG, false).apply();
+
+        // Inicia a Main Activity:
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        finish();
+        startActivity(intent);
     }
 
 }
