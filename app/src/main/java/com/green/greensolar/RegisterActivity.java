@@ -2,9 +2,8 @@ package com.green.greensolar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,7 +20,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-
 
     //Constantes:
     static final String GREEN_PREFS = "GreenPrefs";
@@ -129,11 +127,11 @@ public class RegisterActivity extends AppCompatActivity {
                 new OnCompleteListener<AuthResult>() {
 
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(Task<AuthResult> task) {
                         Log.d("GreenSolar", "createUser onComplete: " + task.isSuccessful());
 
                         if(!task.isSuccessful()){
-                            Log.d("FlashChat", "user creation failed");
+                            Log.d("GreenSolar", "user creation failed");
                             showErrorDialog("Registration attempt failed");
                         } else {
                             saveDisplayName();
