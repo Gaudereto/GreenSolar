@@ -18,12 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.green.greensolar.Controllers.SharedPreferencesController;
 
 public class RegisterActivity extends AppCompatActivity {
-
-    //Constantes:
-    static final String GREEN_PREFS = "GreenPrefs";
-    static final String USER_NAME = "username";
 
     //Referências interface
     private AutoCompleteTextView mUsernameView;
@@ -134,20 +131,13 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d("GreenSolar", "user creation failed");
                             showErrorDialog("Registration attempt failed");
                         } else {
-                            saveDisplayName();
-                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            new SharedPreferencesController(RegisterActivity.this)
+                                    .saveUserName(mUsernameView.getText().toString());
                             finish();
-                            startActivity(intent);
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         }
                     }
                 });
-    }
-
-    // TODO: Save the display name to Shared Preferences
-    private void saveDisplayName() {
-        String displayName = mUsernameView.getText().toString();
-        SharedPreferences prefs = getSharedPreferences(GREEN_PREFS, 0);
-        prefs.edit().putString(USER_NAME, displayName).apply();
     }
 
     // TODO: Create an alert dialog to show in case registration failed

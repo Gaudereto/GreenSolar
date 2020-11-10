@@ -10,4 +10,8 @@
     <string name="error_invalid_password">Password too short or does not match</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_city_not_found">Cidade não cadastrada no banco de dados!</string>
+    <string name="error_invalid_energy_consumption">Consumo de energia invalido!</string>
+    <string name="error_envalid_energy_phases">Por favor informe o tipo do seu padrão de entrada</string>
+    <string name="default_user_name">User</string>
 </resources>

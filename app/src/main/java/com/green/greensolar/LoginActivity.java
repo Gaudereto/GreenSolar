@@ -1,7 +1,6 @@
 package com.green.greensolar;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.green.greensolar.Controllers.SharedPreferencesController;
 
 public class LoginActivity extends AppCompatActivity {
-
-    // Constantes:
-    static final String GREEN_PREFS = "GreenPrefs";
-    static final String LOGGED_FLAG = "userlogged";
 
     // Referências da interface:
     private AutoCompleteTextView mEmailView;
@@ -85,14 +81,12 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("GreenSolar", "Problem signing in: " + task.getException());
                     showErrorDialog("Houve um problema com Login");
                 } else {
-                    // Salva o status do usuário como logado:
-                    SharedPreferences prefs = getSharedPreferences(GREEN_PREFS, 0);
-                    prefs.edit().putBoolean(LOGGED_FLAG, true).apply();
+                    // Save state of user as logged:
+                    new SharedPreferencesController(LoginActivity.this).setLogged(true);
 
-                    // Inicia a Main Activity:
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    // finish and inity main activity:
                     finish();
-                    startActivity(intent);
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
 
             }
