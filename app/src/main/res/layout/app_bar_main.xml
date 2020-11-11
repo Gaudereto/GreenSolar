@@ -25,6 +25,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/welcome_text"
                     android:layout_width="wrap_content"
@@ -51,7 +52,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_below="@id/aux_view1" />
-
                 <AutoCompleteTextView
                     android:id="@+id/city_edit_text"
                     android:layout_width="match_parent"
@@ -64,7 +64,6 @@
                     android:inputType="text"
                     android:layout_margin="8dp"
                     android:layout_below="@id/city_text" />
-
                 <View
                     android:id="@+id/aux_view2"
                     android:layout_width="match_parent"
@@ -83,7 +82,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_below="@id/aux_view2"/>
-
                 <EditText
                     android:id="@+id/consumo_edit_text"
                     android:layout_width="match_parent"
@@ -97,7 +95,6 @@
                     android:inputType="number"
                     android:layout_margin="8dp"
                     android:layout_below="@id/consumo_text"/>
-
                 <View
                     android:id="@+id/aux_view3"
                     android:layout_width="match_parent"
@@ -116,7 +113,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_below="@id/aux_view3"/>
-
                 <EditText
                     android:id="@+id/fare_edit_text"
                     android:layout_width="match_parent"
@@ -137,6 +133,7 @@
                     android:background="@color/light_gray"
                     android:layout_below="@id/fare_edit_text">
                 </View>
+
                 <TextView
                     android:id="@+id/system_type_text"
                     android:layout_width="wrap_content"
@@ -181,6 +178,7 @@
                         android:textColor="@android:color/tab_indicator_text"
                         android:textStyle="bold" />
                 </RadioGroup>
+
             </RelativeLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

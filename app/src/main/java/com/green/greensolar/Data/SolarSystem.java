@@ -7,6 +7,7 @@ public class SolarSystem implements Serializable {
     private static final double PANEL_EFFICIENCY = 0.1697;
     private static final double PERFORMANCE_RATIO = 0.75;
     private static final double PANEL_POWER_PER_AREA = 169.725148;
+    public static final int CASH_FLOW_MONTHS = 24;
 
     // Client input data:
     private final CityData mCity;
@@ -14,18 +15,19 @@ public class SolarSystem implements Serializable {
     private final double mFare;
     private final int mSystemPhases;
 
-    // Output system parameters:
+
     private static class SystemPrice implements Serializable{
         public double min;
         public double max;
     }
 
+    // Output system parameters:
     private double mSystemPower;
     private double mSystemArea;
     private final SystemPrice mSystemPrice = new SystemPrice();
     private double mYearEconomy;
     private double mPayback;
-    private float mCashFlux[] = new float[25];
+    private float mCashFlow[] = new float[CASH_FLOW_MONTHS];
 
     public SolarSystem(CityData city,
                        double consume,
@@ -52,10 +54,9 @@ public class SolarSystem implements Serializable {
         // Economic results:
         mYearEconomy = mSystemArea*PANEL_EFFICIENCY*PERFORMANCE_RATIO*mCity.getIrradiationInclined()*365* mFare;
         mPayback = ((mSystemPrice.min + mSystemPrice.max)/(2*mYearEconomy));
-        for (int i=0; i<25; i++){
-            mCashFlux[i] = (float) (-(mSystemPrice.min + mSystemPrice.max)/2+mYearEconomy*(i+1));
+        for (int year=0; year < CASH_FLOW_MONTHS; year++){
+            mCashFlow[year] = (float) (mYearEconomy*(year+1) -(mSystemPrice.min + mSystemPrice.max)/2);
         }
-
     }
 
     public CityData getCityData() {
@@ -86,8 +87,8 @@ public class SolarSystem implements Serializable {
         return mPayback;
     }
 
-    public float[] getCashFlux() {
-        return mCashFlux;
+    public float[] getCashFlow() {
+        return mCashFlow;
     }
 
     private void getPriceByPower(double power) {
@@ -126,13 +127,15 @@ public class SolarSystem implements Serializable {
     }
 
     private double getPhaseEnergy(int ph) {
-        if(ph==1) {
-            return 30.0;
-        } else if(ph==2) {
-            return 50.0;
-        } else if(ph==3) {
-            return 100.0;
+        switch(ph) {
+            case 1:
+                return 30.0;
+            case 2:
+                return 50.0;
+            case 3:
+                return 100.0;
+            default:
+                return 0.0;
         }
-        return 0.0;
     }
 }

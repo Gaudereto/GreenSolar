@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -14,6 +13,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Observable;
+
 import com.green.greensolar.Data.SolarSystem;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -47,8 +48,6 @@ public class ResultsActivity extends AppCompatActivity {
 
         // Presenting results on the screen:
         showSolarSystemProjectResults(solarSystem);
-
-
     }
 
     void showSolarSystemProjectResults(SolarSystem solarSystem) {
@@ -78,12 +77,12 @@ public class ResultsActivity extends AppCompatActivity {
         mYearEconomyText.setText(nf.format(solarSystem.getYearEconomy()));
         mPaybackText.setText(String.format(locale, "%.1f anos", solarSystem.getPayback()));
 
-        float cashFlux[] = solarSystem.getCashFlux();
-        // Configuração do gráfico com resultados:
-        List<Entry> entries = new ArrayList<Entry>();
-        for (float i=0; i<25; i++){
+        // Configuring cash flow
+        float[] cashFlow = solarSystem.getCashFlow();
+        List<Entry> entries = new ArrayList<>();
+        for (float i=0; i < SolarSystem.CASH_FLOW_MONTHS; i++){
             int k=(int)i;
-            entries.add(new Entry(i,cashFlux[k]));
+            entries.add(new Entry(i,cashFlow[k]));
         }
         LineDataSet dataSet = new LineDataSet(entries,"Label");
         dataSet.setColor(R.color.light_green);
