@@ -1,4 +1,4 @@
-package com.green.greensolar.PvSystemInput;
+package com.green.greensolar.Presentation.SystemInput;
 
 import androidx.annotation.NonNull;
 
@@ -9,14 +9,14 @@ import com.green.greensolar.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PvSystemInputPresenter implements PvSystemInputContract.Presenter {
-    private final PvSystemInputContract.View mView;
+public class SystemInputPresenter implements SystemInputContract.Presenter {
+    private final SystemInputContract.View mView;
 
     static private final double DEFAULT_FARE = 0.75;
     private final CityDataRepository repository;
 
 
-    public PvSystemInputPresenter(PvSystemInputContract.View view) {
+    public SystemInputPresenter(SystemInputContract.View view) {
         repository = new CityDataRepository();
         mView = view;
     }
@@ -109,12 +109,10 @@ public class PvSystemInputPresenter implements PvSystemInputContract.Presenter {
             return null;
         }
 
-        SolarSystem solarSystem = new SolarSystem(
+        return new SolarSystem(
                 chosenCity,
                 consumptionValue,
                 fareValue,
                 phasesValue);
-
-        return solarSystem;
     }
 }

@@ -13,7 +13,7 @@ public class CityDataRepository {
             new CityData("Bicas",4.77,4.60),
             new CityData("Ponte Nova",4.97,4.78));
 
-    public List<CityData> getCitiesList() {
+    public final List<CityData> getCitiesList() {
         return CITIES_DATA;
     }
 }

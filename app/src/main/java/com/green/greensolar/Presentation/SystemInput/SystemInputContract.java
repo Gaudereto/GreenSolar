@@ -1,10 +1,9 @@
-package com.green.greensolar.PvSystemInput;
+package com.green.greensolar.Presentation.SystemInput;
 
 import com.green.greensolar.Data.SolarSystem;
-
 import java.util.List;
 
-public interface PvSystemInputContract {
+public interface SystemInputContract {
 
     interface View {
         void showAvaiableCitiesName(List<String> cities);

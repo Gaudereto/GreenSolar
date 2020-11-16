@@ -1,4 +1,4 @@
-package com.green.greensolar.PvSystemInput;
+package com.green.greensolar.Presentation.SystemInput;
 
 import android.content.Intent;
 import androidx.appcompat.app.AlertDialog;
@@ -11,14 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-
 import com.green.greensolar.Data.SolarSystem;
+import com.green.greensolar.Presentation.ResultSystem.ResultSystemActivity;
 import com.green.greensolar.R;
-import com.green.greensolar.ResultsActivity;
 
 import java.util.List;
 
-public class PvSystemInputFragment extends Fragment implements PvSystemInputContract.View {
+public class SystemInputFragment extends Fragment implements SystemInputContract.View {
 
     // UI interface refs:
     private AutoCompleteTextView mCityTextView;
@@ -26,14 +25,14 @@ public class PvSystemInputFragment extends Fragment implements PvSystemInputCont
     private RadioGroup mRadioGroup;
 
     // Main Activity data and logic controller:
-    private PvSystemInputContract.Presenter mPresenter;
+    private SystemInputContract.Presenter mPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.app_bar_main, container, false);
 
-        mPresenter = new PvSystemInputPresenter(this);
+        mPresenter = new SystemInputPresenter(this);
 
         // Activity views initialization:
         mCityTextView = view.findViewById(R.id.city_edit_text);
@@ -74,7 +73,7 @@ public class PvSystemInputFragment extends Fragment implements PvSystemInputCont
         }
 
         // Start Solar system result activity:
-        Intent newIntent = new Intent(this.getContext(), ResultsActivity.class);
+        Intent newIntent = new Intent(this.getContext(), ResultSystemActivity.class);
         newIntent.putExtra("SolarSystem", solarSystem);
         startActivity(newIntent);
     }
