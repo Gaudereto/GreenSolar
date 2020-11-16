@@ -22,6 +22,10 @@
         app:headerLayout="@layout/app_header_main"
         app:menu="@menu/activity_main_drawer" />
 
+    <fragment
+        android:name="com.green.greensolar.PvSystemInput.PvSystemInputFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
 
 
 

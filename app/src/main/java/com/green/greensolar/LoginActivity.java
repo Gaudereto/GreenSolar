@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.green.greensolar.Controllers.SharedPreferencesController;
+import com.green.greensolar.PvSystemInput.PvSystemInputFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // finish and inity main activity:
                     finish();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, PvSystemInputFragment.class));
                 }
 
             }
