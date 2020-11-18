@@ -48,7 +48,7 @@ public class ResultSystemPresenter implements ResultSystemContract.Presenter {
 
         mView.showPayback(String.format(locale, "%.1f anos", solarSystem.getPayback()));
 
-        // Configuring cash flow
+        // Configuring cash flow:
         float[] cashFlow = solarSystem.getCashFlow();
         List<Entry> entries = new ArrayList<>();
         for (int i=0; i < SolarSystem.CASH_FLOW_MONTHS; i++){

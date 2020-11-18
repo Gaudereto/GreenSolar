@@ -15,7 +15,6 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
     static private final double DEFAULT_FARE = 0.75;
     private final CityDataRepository repository;
 
-
     public SystemInputPresenter(SystemInputContract.View view) {
         repository = new CityDataRepository();
         mView = view;
@@ -47,7 +46,6 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         if(consumption == 0) {
             return null;
         }
-
         return consumption;
     }
 
@@ -60,7 +58,6 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         if(fareValue == 0) {
             return DEFAULT_FARE;
         }
-
         return fareValue;
     }
 
@@ -72,7 +69,6 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
                 return 2;
             case R.id.tri_option:
                 return 3;
-
             default:
                 return null;
         }

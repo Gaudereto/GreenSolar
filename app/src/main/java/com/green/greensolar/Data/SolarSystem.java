@@ -15,7 +15,6 @@ public class SolarSystem implements Serializable {
     private final double mFare;
     private final int mSystemPhases;
 
-
     private static class SystemPrice implements Serializable{
         public double min;
         public double max;
@@ -27,7 +26,7 @@ public class SolarSystem implements Serializable {
     private final SystemPrice mSystemPrice = new SystemPrice();
     private double mYearEconomy;
     private double mPayback;
-    private float mCashFlow[] = new float[CASH_FLOW_MONTHS];
+    private float[] mCashFlow = new float[CASH_FLOW_MONTHS];
 
     public SolarSystem(CityData city,
                        double consume,

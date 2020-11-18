@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
-        <activity android:name=".ResultsActivity" />
+        <activity android:name=".Presentation.ResultSystem.ResultSystemFragment" />
 
         <activity
             android:name=".LoginActivity"
@@ -32,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
     </application>
 </manifest>

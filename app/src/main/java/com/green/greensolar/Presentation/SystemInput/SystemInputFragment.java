@@ -1,18 +1,20 @@
 package com.green.greensolar.Presentation.SystemInput;
 
-import android.content.Intent;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import com.green.greensolar.Data.SolarSystem;
-import com.green.greensolar.Presentation.ResultSystem.ResultSystemActivity;
+import com.green.greensolar.Presentation.ResultSystem.ResultSystemFragment;
 import com.green.greensolar.R;
 
 import java.util.List;
@@ -30,7 +32,7 @@ public class SystemInputFragment extends Fragment implements SystemInputContract
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.app_bar_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_system_input, container, false);
 
         mPresenter = new SystemInputPresenter(this);
 
@@ -72,10 +74,24 @@ public class SystemInputFragment extends Fragment implements SystemInputContract
             return;
         }
 
-        // Start Solar system result activity:
-        Intent newIntent = new Intent(this.getContext(), ResultSystemActivity.class);
-        newIntent.putExtra("SolarSystem", solarSystem);
-        startActivity(newIntent);
+        // Hide any open keyboard:
+        InputMethodManager imm = (InputMethodManager)
+                this.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getRootView().getWindowToken(), 0);
+
+        // Setting data to be transferred to result fragment:
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("SolarSystem", solarSystem);
+
+        // Result Fragment instance:
+        Fragment ResultSystemFragment = new ResultSystemFragment();
+        ResultSystemFragment.setArguments(bundle);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, ResultSystemFragment)
+                .addToBackStack(null)
+                .commit();;
     }
 
     @Override

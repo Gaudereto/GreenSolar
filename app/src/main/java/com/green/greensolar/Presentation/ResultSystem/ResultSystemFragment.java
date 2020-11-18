@@ -1,8 +1,11 @@
 package com.green.greensolar.Presentation.ResultSystem;
 
-import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -11,7 +14,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.green.greensolar.Data.SolarSystem;
 import com.green.greensolar.R;
 
-public class ResultSystemActivity extends AppCompatActivity implements ResultSystemContract.View {
+public class ResultSystemFragment extends Fragment implements ResultSystemContract.View {
 
     // Activity member variables:
     private ResultSystemContract.Presenter mPresenter;
@@ -24,26 +27,27 @@ public class ResultSystemActivity extends AppCompatActivity implements ResultSys
     private LineChart mResultsChart;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_result_system, container, false);
 
-        // activity views initialization:
-        mIrradiationText = findViewById(R.id.irradiation_value_text);
-        mSystemPowerText = findViewById(R.id.system_power_value_text);
-        mSystemAreaText  = findViewById(R.id.system_area_value_text);
-        mSystemPriceText = findViewById(R.id.system_price_value_text);
-        mYearEconomyText = findViewById(R.id.year_economy_value_text);
-        mPaybackText     = findViewById(R.id.payback_value_text);
-        mResultsChart    = findViewById(R.id.results_chart);
+        mIrradiationText = view.findViewById(R.id.irradiation_value_text);
+        mSystemPowerText = view.findViewById(R.id.system_power_value_text);
+        mSystemAreaText  = view.findViewById(R.id.system_area_value_text);
+        mSystemPriceText = view.findViewById(R.id.system_price_value_text);
+        mYearEconomyText = view.findViewById(R.id.year_economy_value_text);
+        mPaybackText     = view.findViewById(R.id.payback_value_text);
+        mResultsChart    = view.findViewById(R.id.results_chart);
 
         // Get solar system data from client:
-        Intent myIntent = getIntent();
-        SolarSystem solarSystem = (SolarSystem) myIntent.getSerializableExtra("SolarSystem");
+        SolarSystem solarSystem = (SolarSystem)
+                this.getArguments().getSerializable("SolarSystem");;
 
         // Presenting results on the screen:
         mPresenter = new ResultSystemPresenter(this);
         mPresenter.processResultPvSystem(solarSystem);
+
+        return view;
     }
 
     @Override

@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.green.greensolar.Controllers.SharedPreferencesController;
-import com.green.greensolar.SystemInput.SystemInputFragment;
+import com.green.greensolar.Presentation.SystemInput.SystemInputFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -72,7 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, "Efetuando login do usuário...", Toast.LENGTH_SHORT).show();
 
         // TODO: Use FirebaseAuth to sign in with email & password
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Save state of user as logged:
                     new SharedPreferencesController(LoginActivity.this).setLogged(true);
 
-                    // finish and inity main activity:
+                    // finish and init main activity:
                     finish();
                     startActivity(new Intent(LoginActivity.this, SystemInputFragment.class));
                 }
