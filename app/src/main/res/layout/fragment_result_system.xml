@@ -213,7 +213,7 @@
                 android:layout_below="@id/aux_view7"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Fluxo de caixa acumulado (2 anos):"
+                android:text="Fluxo de caixa acumulado (10 anos):"
                 android:textSize="16sp" />
 
             <com.github.mikephil.charting.charts.LineChart

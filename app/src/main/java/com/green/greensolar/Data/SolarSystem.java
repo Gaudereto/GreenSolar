@@ -7,7 +7,7 @@ public class SolarSystem implements Serializable {
     private static final double PANEL_EFFICIENCY = 0.1697;
     private static final double PERFORMANCE_RATIO = 0.75;
     private static final double PANEL_POWER_PER_AREA = 169.725148;
-    public static final int CASH_FLOW_MONTHS = 24;
+    public static final int CASH_FLOW_MONTHS = 10;
 
     // Client input data:
     private final CityData mCity;
@@ -15,7 +15,7 @@ public class SolarSystem implements Serializable {
     private final double mFare;
     private final int mSystemPhases;
 
-    private static class SystemPrice implements Serializable{
+    private static class SystemPrice implements Serializable {
         public double min;
         public double max;
     }
@@ -51,7 +51,7 @@ public class SolarSystem implements Serializable {
         getPriceByPower(mSystemPower);
 
         // Economic results:
-        mYearEconomy = mSystemArea*PANEL_EFFICIENCY*PERFORMANCE_RATIO*mCity.getIrradiationInclined()*365* mFare;
+        mYearEconomy = mSystemArea*PANEL_EFFICIENCY*PERFORMANCE_RATIO*mCity.getIrradiationInclined()*365*mFare;
         mPayback = ((mSystemPrice.min + mSystemPrice.max)/(2*mYearEconomy));
         for (int year=0; year < CASH_FLOW_MONTHS; year++){
             mCashFlow[year] = (float) (mYearEconomy*(year+1) -(mSystemPrice.min + mSystemPrice.max)/2);

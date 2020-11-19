@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements
         setupNavigationView();
 
         // Start fragment view:
-        startFragment(savedInstanceState);
+        startFragmentContainer(savedInstanceState);
     }
 
-    void startFragment(Bundle savedInstanceState) {
+    void startFragmentContainer(Bundle savedInstanceState) {
         if (findViewById(R.id.fragment_container) != null) {
 
             // However, if we're being restored from a previous state,
