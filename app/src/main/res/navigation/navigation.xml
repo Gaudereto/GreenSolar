@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/systemInputFragment">
+    <fragment
+        android:id="@+id/systemInputFragment"
+        android:name="com.green.greensolar.Presentation.SystemInput.SystemInputFragment"
+        android:label="fragment_system_input"
+        tools:layout="@layout/fragment_system_input" >
+        <action
+            android:id="@+id/action_resultsFromInput"
+            app:destination="@id/resultSystemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultSystemFragment"
+        android:name="com.green.greensolar.Presentation.ResultSystem.ResultSystemFragment"
+        android:label="fragment_result_system"
+        tools:layout="@layout/fragment_result_system" >
+        <argument
+            android:name="SolarSystem"
+            app:argType="com.green.greensolar.Data.SolarSystem" />
+    </fragment>
+</navigation>

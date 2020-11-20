@@ -14,8 +14,6 @@
 
         <activity android:name=".MainActivity" />
 
-        <activity android:name=".Presentation.ResultSystem.ResultSystemFragment" />
-
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

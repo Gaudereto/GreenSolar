@@ -2,6 +2,7 @@ package com.green.greensolar.Presentation.SystemInput;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -79,19 +80,12 @@ public class SystemInputFragment extends Fragment implements SystemInputContract
                 this.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getView().getRootView().getWindowToken(), 0);
 
-        // Setting data to be transferred to result fragment:
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("SolarSystem", solarSystem);
+        SystemInputFragmentDirections.ActionResultsFromInput action =
+                SystemInputFragmentDirections
+                        .actionResultsFromInput(solarSystem);
+        Navigation.findNavController(this.getView()).navigate(action);
 
-        // Result Fragment instance:
-        Fragment ResultSystemFragment = new ResultSystemFragment();
-        ResultSystemFragment.setArguments(bundle);
 
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, ResultSystemFragment)
-                .addToBackStack(null)
-                .commit();;
     }
 
     @Override
