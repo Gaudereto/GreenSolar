@@ -28,7 +28,7 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         return citiesNames;
     }
 
-    public CityData getCityDataByName(String cityName) {
+    private CityData getCityDataByName(String cityName) {
         for(CityData city : repository.getCitiesList()) {
             if(city.getName().equals(cityName)) {
                 return city;
@@ -37,7 +37,7 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         return null;
     }
 
-    public Double validateEnergyConsumption(@NonNull String energyConsumption) {
+    private Double validateEnergyConsumption(@NonNull String energyConsumption) {
         if(energyConsumption.isEmpty()) {
             return null;
         }
@@ -49,7 +49,7 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         return consumption;
     }
 
-    public double validateFare(String fare) {
+    private double validateFare(String fare) {
         if(fare.isEmpty()) {
             return DEFAULT_FARE;
         }
@@ -61,7 +61,7 @@ public class SystemInputPresenter implements SystemInputContract.Presenter {
         return fareValue;
     }
 
-    public Integer getNumberOfPhases(int id) {
+    private Integer getNumberOfPhases(int id) {
         switch(id) {
             case R.id.mono_option:
                 return 1;

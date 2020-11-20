@@ -76,16 +76,12 @@ public class SystemInputFragment extends Fragment implements SystemInputContract
         }
 
         // Hide any open keyboard:
-        InputMethodManager imm = (InputMethodManager)
-                this.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getView().getRootView().getWindowToken(), 0);
+        hideKeyboard();
 
         SystemInputFragmentDirections.ActionResultsFromInput action =
                 SystemInputFragmentDirections
                         .actionResultsFromInput(solarSystem);
         Navigation.findNavController(this.getView()).navigate(action);
-
-
     }
 
     @Override
@@ -121,5 +117,11 @@ public class SystemInputFragment extends Fragment implements SystemInputContract
                 .setPositiveButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+    void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager)
+                this.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getRootView().getWindowToken(), 0);
     }
 }
